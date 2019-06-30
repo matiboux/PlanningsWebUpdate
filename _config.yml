@@ -1,0 +1,9 @@
+page_gen:
+  - index_files: <<true or false>
+    data: <<name of the data>>
+    template: <<name of the template to use to generate the page>>
+    name: <<field used to generate the filename>>
+    dir: <<directory in which files are to be generated>>
+    extension: <<extension used to generate the filename>>
+    filter: <<property to filter data records by>>
+  - ...
