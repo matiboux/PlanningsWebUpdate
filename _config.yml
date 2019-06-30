@@ -2,7 +2,8 @@ page_gen:
 - data: "2023"
   template: "page"
   name: "name"
-- data: "members"
+- index_files: true
+  data: "members"
   template: "profile"
   name: "name"
   dir: "people"
