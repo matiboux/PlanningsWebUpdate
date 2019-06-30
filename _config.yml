@@ -2,3 +2,7 @@ page_gen:
 - data: "2023"
   template: "page"
   name: "name"
+- data: "members"
+  template: "profile"
+  name: "name"
+  dir: "people"
