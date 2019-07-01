@@ -18,6 +18,12 @@
 								{% if folder.description %}
 									<p class="card-text">{{ folder.description }}</p>
 								{% endif %}
+								{% if folder.subfolders %}
+									{% for subfolders in folder.subfolders %}
+										<a href="{{ folder.subfolders.path | append: '/' | relative_url }}" class="btn btn-info card-link">Browse files</a>
+									{% endfor %}
+									<br />
+								{% endif %}
 								<a href="{{ folder.path | append: '/' | relative_url }}" class="btn btn-primary card-link">Browse files</a>
 								<a href="{{ site.github.repository_url }}/blob/master/{{ folder.path }}" class="btn btn-light card-link">View in Github</a>
 							</div>

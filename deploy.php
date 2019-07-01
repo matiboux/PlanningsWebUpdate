@@ -3,7 +3,7 @@
  * Get the template page for folders */
 
 $templatePage = file_get_contents('./template.html');
-// unlink('./template.html');
+unlink('./template.html');
 
 /** ***
  * Get valid folders in the root directory */
@@ -19,12 +19,6 @@ $allFiles = array(
 
 
 /** ***
- * Store read meta files informations */
-
-$metaJSONs = [];
-
-
-/** ***
  * Generate infos for the root directory */
 
 // Returns meta.json files informations
@@ -37,12 +31,6 @@ function getMetaInfos($pathList) {
 		$isDir = is_dir($path);
 		$dir = $isDir ? $path : dirname($path);
 		$metaInfos[$i] = [];
-		
-		global $metaJSONs; // Access $metaJSONs from outside the function
-		if(!isset($metaJSONs[$dir]) AND file_exists($dir . '/meta.json')) {
-			$metaJSONs[$dir] = json_decode(file_get_contents($dir . '/meta.json'), true);
-			// unlink($dir . '/meta.json'); // Delete read meta.json files
-		}
 		
 		if($isDir) {
 			if(isset($metaJSONs[$dir]['folder']))
@@ -79,6 +67,16 @@ function getMetaInfos($pathList) {
 		
 		$metaInfos[$i]['basename'] = basename($path);
 		$metaInfos[$i]['path'] = str_replace('#', '%23', $path); // URL encodes '#' characters
+		
+		$subfiles = glob($path . '/*.*');
+		if(empty($subfiles)) {
+			$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
+			$metaInfos[$i]['subfolders'] = [];
+			foreach($subfolders as $folder) {
+				$metaInfos[$i]['subfolders'][] = str_replace('#', '%23', $folder);
+			}
+		}
+		
 		$i++;
 	}
 	return $metaInfos;
