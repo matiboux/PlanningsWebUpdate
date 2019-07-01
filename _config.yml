@@ -1,9 +1,3 @@
-page_gen:
-- data: "2023"
-  template: "page"
-  name: "name"
-- index_files: true
-  data: "members"
-  template: "profile"
-  name: "name"
-  dir: "people"
+title: Epidocs / Plannings
+description: Plannings for EPITA students
+author: Matiboux
