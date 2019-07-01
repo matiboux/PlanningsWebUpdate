@@ -10,7 +10,7 @@ $templatePage = file_get_contents('./template.html');
 
 // Filters out folders starting with "_" or "."
 $rootFolders = array_filter(glob('*', GLOB_ONLYDIR), function($str) {
-	return $str[0] != '_' && $str[0] != '.';
+	return $str[0] != '_' && $str[0] != '.' && !file_exists($str . '/.archived');
 });
 
 $allFiles = array(
