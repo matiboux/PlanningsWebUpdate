@@ -69,6 +69,7 @@ function getMetaInfos($pathList) {
 		$metaInfos[$i]['path'] = str_replace('#', '%23', $path); // URL encodes '#' characters
 		
 		$subfiles = glob($path . '/*.*');
+		print_r($subfiles);
 		if(empty($subfiles)) {
 			$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
 			$metaInfos[$i]['subfolders'] = [];
