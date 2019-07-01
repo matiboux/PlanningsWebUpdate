@@ -72,6 +72,7 @@ function getMetaInfos($pathList) {
 		print_r($subfiles);
 		if(empty($subfiles)) {
 			$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
+			print_r(subfolders);
 			$metaInfos[$i]['subfolders'] = [];
 			foreach($subfolders as $folder) {
 				$metaInfos[$i]['subfolders'][] = str_replace('#', '%23', $folder);
