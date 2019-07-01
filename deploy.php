@@ -33,8 +33,16 @@ function getMetaInfos($pathList) {
 		$metaInfos[$i] = [];
 		
 		if($isDir) {
-			if(isset($metaJSONs[$dir]['folder']))
-				$metaInfos[$i] = $metaJSONs[$dir]['folder'];
+			$subfiles = glob($path . '/*.*');
+			print_r($subfiles);
+			if(empty($subfiles)) {
+				$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
+				print_r($subfolders);
+				$metaInfos[$i]['subfolders'] = [];
+				foreach($subfolders as $folder) {
+					$metaInfos[$i]['subfolders'][] = str_replace('#', '%23', $folder);
+				}
+			}
 			
 			// Generate breadcrumb for this folder
 			$breadcrumb = [];
@@ -67,18 +75,6 @@ function getMetaInfos($pathList) {
 		
 		$metaInfos[$i]['basename'] = basename($path);
 		$metaInfos[$i]['path'] = str_replace('#', '%23', $path); // URL encodes '#' characters
-		
-		$subfiles = glob($path . '/*.*');
-		print_r($subfiles);
-		if(empty($subfiles)) {
-			$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
-			print_r(subfolders);
-			$metaInfos[$i]['subfolders'] = [];
-			foreach($subfolders as $folder) {
-				$metaInfos[$i]['subfolders'][] = str_replace('#', '%23', $folder);
-			}
-		}
-		
 		$i++;
 	}
 	return $metaInfos;
