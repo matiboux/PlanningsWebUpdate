@@ -40,7 +40,10 @@ function getMetaInfos($pathList) {
 				print_r($subfolders);
 				$metaInfos[$i]['subfolders'] = [];
 				foreach($subfolders as $folder) {
-					$metaInfos[$i]['subfolders'][] = str_replace('#', '%23', $folder);
+					$metaInfos[$i]['subfolders'][] = array(
+						'basename' => basename($folder),
+						'path' =>str_replace('#', '%23', $folder)
+					);
 				}
 			}
 			
