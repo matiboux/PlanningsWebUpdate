@@ -2,8 +2,8 @@
 /** ***
  * Get the template page for folders */
 
-$templatePage = file_get_contents('./template.html');
-unlink('./template.html');
+$templateFolderPage = file_get_contents('./_templates/folder.html');
+unlink('./_templates/folder.html');
 
 /** ***
  * Get valid folders in the root directory */
@@ -64,8 +64,8 @@ function getMetaInfos($pathList) {
 			];
 			
 			// Save generated index file
-			global $templatePage;
-			$thisPage = str_replace($search, $replace, $templatePage);
+			global $templateFolderPage;
+			$thisPage = str_replace($search, $replace, $templateFolderPage);
 			file_put_contents($dir . '/index.html', $thisPage);
 		}
 		else {
