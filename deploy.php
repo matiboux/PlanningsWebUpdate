@@ -19,6 +19,12 @@ $allFiles = array(
 
 
 /** ***
+ * Store read meta files informations */
+
+$metaJSONs = [];
+
+
+/** ***
  * Generate infos for the root directory */
 
 // Returns meta.json files informations
@@ -33,6 +39,12 @@ function getMetaInfos($pathList) {
 		$metaInfos[$i] = [];
 		
 		$pathInfo = pathinfo($path);
+		
+		global $metaJSONs; // Access $metaJSONs from outside the function
+		if(!isset($metaJSONs[$dir]) AND file_exists($dir . '/meta.json')) {
+			$metaJSONs[$dir] = json_decode(file_get_contents($dir . '/meta.json'), true);
+			unlink($dir . '/meta.json'); // Delete read meta.json files
+		}
 		
 		if($isDir) {
 			// Check if no subfiles in this folder
