@@ -32,6 +32,8 @@ function getMetaInfos($pathList) {
 		$dir = $isDir ? $path : dirname($path);
 		$metaInfos[$i] = [];
 		
+		$pathInfo = pathinfo($path);
+		
 		if($isDir) {
 			// Check if no subfiles in this folder
 			$subfiles = glob($path . '/*.*');
@@ -69,14 +71,18 @@ function getMetaInfos($pathList) {
 			file_put_contents($dir . '/index.html', $thisPage);
 		}
 		else {
-			$fileInfos = pathinfo($path);
-			if(isset($metaJSONs[$dir]['files'][$fileInfos['basename']]))
-				$metaInfos[$i] = $metaJSONs[$dir]['files'][$fileInfos['basename']];
-			if(!isset($metaInfos[$i]['embed']) AND $fileInfos['extension'] == 'pdf')
+			if(isset($metaJSONs[$dir]['files'][$pathInfo['basename']]))
+				$metaInfos[$i] = $metaJSONs[$dir]['files'][$pathInfo['basename']];
+			if(!isset($metaInfos[$i]['embed']) AND $pathInfo['extension'] == 'pdf')
 				$metaInfos[$i]['embed'] = true;
 		}
 		
 		$metaInfos[$i]['basename'] = basename($path);
+		
+		// Check if the page is a web page
+		if(!$isDir && ($pathInfo['extension'] == 'html' || $pathInfo['extension'] == 'md'))
+			$path = $pathInfo['dirname'] . '/' . $pathInfo['filename']; // Remove extension from path
+		
 		$metaInfos[$i]['path'] = str_replace('#', '%23', $path); // URL encodes '#' characters
 		$i++;
 	}
