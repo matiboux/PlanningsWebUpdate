@@ -33,11 +33,11 @@ function getMetaInfos($pathList) {
 		$metaInfos[$i] = [];
 		
 		if($isDir) {
+			// Check if no subfiles in this folder
 			$subfiles = glob($path . '/*.*');
-			print_r($subfiles);
 			if(empty($subfiles)) {
+				// List subfolders
 				$subfolders = glob($path . '/*', GLOB_ONLYDIR) ?: [];
-				print_r($subfolders);
 				$metaInfos[$i]['subfolders'] = [];
 				foreach($subfolders as $folder) {
 					$metaInfos[$i]['subfolders'][] = array(
