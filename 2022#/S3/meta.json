@@ -1,0 +1,14 @@
+{
+	"folder": {
+		"title": "S3",
+		"description": "Plannings and information for the 3rd semester."
+	},
+	"files": {
+		"EXAMS.md": {
+			"name": "Information on tests and exams"
+		},
+		"HOMEWORK.md": {
+			"name": "Homework planning and information"
+		},
+	}
+}
