@@ -1,0 +1,49 @@
+/** Epidocs / Past-Exams CSS */
+
+body {
+	background: #f8f9fa; /* bg-light */
+}
+
+h1, h2 {
+	margin-bottom: 1rem;
+	padding-bottom: .5rem;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+img {
+	max-width: 100%;
+}
+
+body > .breadcrumb {
+	margin-bottom: 0;
+}
+.breadcrumb li {
+	display: table-cell;
+}
+
+#main {
+	background: #fff;
+    padding: 1rem 0;
+}
+
+#meta {
+    list-style: none;
+    padding: 0;
+}
+#meta li {
+    padding: 5px 0;
+}
+#meta li:hover, #meta li:focus {
+    background: #f0f0f0;
+}
+#meta li + li {
+    border-top: 1px solid #f0f0f0;
+}
+#meta li .icon {
+	width: 3rem;text-align: center;
+}
+
+footer {
+    padding: 1rem 0;
+    border-top: 2px solid rgba(0, 0, 0, .1);
+}
