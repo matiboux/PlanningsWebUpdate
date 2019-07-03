@@ -1,3 +1,15 @@
+# Epidocs / Plannings / Website Update
+
+This repository is an archive of the work that has been done for the making of the Epidocs / Plannings website. The work has been stashed and pushed to the main project repository. You can see [the pull request here](https://github.com/Epidocs/Plannings/pull/12).
+
+Check out the main project:
+- The website: https://plannings.epidocs.eu/
+- The repository: https://github.com/Epidocs/Plannings/
+
+This repository has [its own website](https://opensource.matiboux.com/PlanningsWebUpdate/). It was used for preview during development.
+
+---
+
 # Plannings EPITA
 
 ## Accès rapide
